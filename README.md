@@ -101,3 +101,17 @@ I found another subdomain let's also this add into /etc/hosts
 
 ![image](https://github.com/Anogota/Soccer/assets/143951834/a98025a7-fac2-453a-a14c-d40df22c31ef)
 
+This site look's very symilar, but we can there singup let's create a account and look what's there.
+Okay there nothing intresting only this
+
+![image](https://github.com/Anogota/Soccer/assets/143951834/183ae68c-5afe-4915-8706-a7164cda0262)
+
+turn on the burp and intercept the traffic maybe when we look deeper we will find something intresting. This websocks look's intresting i think there will be SQLi
+
+![image](https://github.com/Anogota/Soccer/assets/143951834/34833323-7858-4d26-8aee-496988b45acc)
+
+When i tryed {"id":"71080 OR 1=1"} i got Ticket Exists, now i'm sure there is a SQLi also i found this in source code, this help to create a request sqlmap
+```
+  var ws = new WebSocket("ws://soc-player.soccer.htb:9091");
+        window.onload = function () {
+```
