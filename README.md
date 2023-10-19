@@ -126,3 +126,49 @@ And we got this:
 
 ![image](https://github.com/Anogota/Soccer/assets/143951834/4a13c597-d857-48fd-bca7-4445c2969027)
 
+sudo -l, don't working also can't find anything in /etc/crontab/ /etc/shadow /etc/passwd but when i tryed 
+```
+find / -type f -perm -4000 2>/dev/null
+```
+```
+/usr/lib/snapd/snap-confine
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/eject/dmcrypt-get-device
+/usr/bin/umount
+/usr/bin/fusermount
+/usr/bin/mount
+/usr/bin/su
+/usr/bin/newgrp
+/usr/bin/chfn
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/chsh
+/usr/bin/at
+/snap/snapd/17883/usr/lib/snapd/snap-confine
+/snap/core20/1695/usr/bin/chfn
+/snap/core20/1695/usr/bin/chsh
+/snap/core20/1695/usr/bin/gpasswd
+/snap/core20/1695/usr/bin/mount
+/snap/core20/1695/usr/bin/newgrp
+/snap/core20/1695/usr/bin/passwd
+/snap/core20/1695/usr/bin/su
+/snap/core20/1695/usr/bin/sudo
+/snap/core20/1695/usr/bin/umount
+/snap/core20/1695/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core20/1695/usr/lib/openssh/ssh-keysign
+```
+Only one looks intresting ```/usr/local/bin/doas``` but there nothing, i little bit search on SSH and i found in this directory /usr/local/etc doas.conf
+```
+player@soccer:/usr/local/etc$ cat doas.conf 
+permit nopass player as root cmd /usr/bin/dstat
+```
+i got this announcement, i go into this and i found script but 2 lines of code are vulnerabilitable
+
+![image](https://github.com/Anogota/Soccer/assets/143951834/c02eb135-6d21-4560-80e5-f54842da4ba1)
+
+and we get a root.
+
+![image](https://github.com/Anogota/Soccer/assets/143951834/cf746a88-c34a-41c3-a8fe-ec6397409386)
